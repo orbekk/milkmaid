@@ -3,7 +3,7 @@ require 'moocow'
 class Milkmaid
 
   class RTM::Endpoint
-    BASE_URL = "http://localhost/"
+    BASE_URL = "http://localhost:8080/"
   end
 
   def initialize

@@ -46,7 +46,7 @@ set_mock '{
   "response": {
     "headers": {"Content-Type": "text/xml; charset=utf-8"},
     "content": "<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
-      <rsp stat=\"ok\"><frob>5fff5557f095e3bd34390cad777637ca1d6d47a9</frob></rsp>"
+      <rsp stat=\"ok\"><frob>test_frob</frob></rsp>"
   }
 }'
 
@@ -60,7 +60,7 @@ set_mock '{
   "parameters": {
     "method": ["rtm.auth.getToken"],
     "api_key": ["31308536ffed80061df846c3a4564a27"],
-    "frob": ["5fff5557f095e3bd34390cad777637ca1d6d47a9"]
+    "frob": ["test_frob"]
   },
   "response": {
     "headers": {"Content-Type": "text/xml; charset=utf-8"},
@@ -69,7 +69,7 @@ set_mock '{
         <auth>
           <token>5705ff10e0fa215d5b4cffeb07cdeb2f8cbe798b</token>
           <perms>delete</perms>
-          <user id=\"2361556\" username=\"orbekk\" fullname=\"Kjetil ??rbekk\"/>
+          <user id=\"1\" username=\"test_user\" fullname=\"Test User\"/>
         </auth>
       </rsp>"
   }

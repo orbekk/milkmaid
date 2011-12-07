@@ -197,11 +197,20 @@ set_mock '{
     <rsp stat=\"ok\">
       <transaction id=\"5319886148\" undoable=\"0\"/>
       <list id=\"100\">
-        <taskseries id=\"141430077\" created=\"2011-12-06T18:38:11Z\" modified=\"2011-12-06T18:38:11Z\" name=\"new test task\" source=\"api\" url=\"\" location_id=\"\">
+        <taskseries id=\"141430077\"
+                    created=\"2011-12-06T18:38:11Z\"
+                    modified=\"2011-12-06T18:38:11Z\"
+                    name=\"new test task\"
+                    source=\"api\" url=\"\" location_id=\"\">
           <tags/>
           <participants/>
           <notes/>
-          <task id=\"222284206\" due=\"\" has_due_time=\"0\" added=\"2011-12-06T18:38:11Z\" completed=\"\" deleted=\"\" priority=\"N\" postponed=\"0\" estimate=\"\"/>
+          <task id=\"222284206\"
+                due=\"\" has_due_time=\"0\"
+                added=\"2011-12-06T18:38:11Z\"
+                completed=\"\" deleted=\"\"
+                priority=\"N\" postponed=\"0\"
+                estimate=\"\"/>
         </taskseries>
       </list>
     </rsp>
@@ -233,13 +242,23 @@ set_mock '{
     <rsp stat=\"ok\">
       <transaction id=\"5319929527\" undoable=\"1\"/>
       <list id=\"100\">
-        <taskseries id=\"1000\" created=\"2011-12-06T18:44:51Z\" modified=\"2011-12-06T18:45:48Z\" name=\"test task\" source=\"api\" url=\"\" location_id=\"\">
+        <taskseries id=\"1000\"
+                    created=\"2011-12-06T18:44:51Z\"
+                    modified=\"2011-12-06T18:45:48Z\"
+                    name=\"test task\"
+                    source=\"api\" url=\"\"
+                    location_id=\"\">
           <tags>
             <tag>test</tag>
           </tags>
           <participants/>
           <notes/>
-          <task id=\"1005\" due=\"\" has_due_time=\"0\" added=\"2011-12-06T18:44:51Z\" completed=\"2011-12-06T18:45:48Z\" deleted=\"\" priority=\"N\" postponed=\"0\" estimate=\"\"/>
+          <task id=\"1005\" due=\"\"
+                has_due_time=\"0\"
+                added=\"2011-12-06T18:44:51Z\"
+                completed=\"2011-12-06T18:45:48Z\"
+                deleted=\"\" priority=\"N\"
+                postponed=\"0\" estimate=\"\"/>
         </taskseries>
       </list>
     </rsp>

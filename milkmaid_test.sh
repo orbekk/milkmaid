@@ -9,8 +9,8 @@
 
 (sbt "run --port 8080" 2>&1) > httpmock.log  &
 
-# We would like to do this, but unfortunately the java vm detatches and cannot
-# be killed with this PID.
+# We would like to do this, but unfortunately the java
+# vm detatches and cannot be killed with this PID.
 declare -r HTTPMOCK_PID=$!
 echo ${HTTPMOCK_PID} > httpmock.pid
 
@@ -27,15 +27,19 @@ wait_for_httpmock
 function set_mock() {
     MOCK_DATA="$1"
     # echo "Setting up mock: ${MOCK_DATA}"
-    wget -q -O - --post-data "${MOCK_DATA}" http://localhost:8080/_httpmock/set
+    wget -q -O - --post-data "${MOCK_DATA}" \
+        http://localhost:8080/_httpmock/set
 }
 
 ####
 # Authentication: getFrob
 #
-# When milkmaid connects to the RTM service, it requests a frob. This mock 
-# responds with a frob. The frob is used as a part of an URL that the user has
-# to enter in his/her web browser to grant milkmaid access to the RTM service.
+# 
+# When milkmaid connects to the RTM service, it requests
+# a frob. This mock responds with a frob. The frob is
+# used as a part of an URL that the user has to enter in
+# his/her web browser to grant milkmaid access to the RTM
+# service.
 set_mock '{
   "path": "/rest/",
   "parameters": {
@@ -53,8 +57,9 @@ set_mock '{
 ####
 # Authentication: getToken
 #
-# Milkmaid then asks the RTM service for a token. We pretend that the user was
-# granted a token.
+# 
+# Milkmaid then asks the RTM service for a token. We
+# pretend that the user was granted a token.
 set_mock '{
   "path": "/rest/",
   "parameters": {
@@ -78,8 +83,10 @@ set_mock '{
 ####
 # Timelines can be used to undo certain actions.
 #
-# We return a timeline because milkmaid asks for them, but we don't perform any
-# checking of this functionality.
+# 
+# We return a timeline because milkmaid asks for them,
+# but we don't perform any checking of this
+# functionality.
 set_mock '{
   "path": "/rest/",
   "parameters": {
@@ -108,10 +115,18 @@ set_mock '{
     "content": "<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
       <rsp stat=\"ok\">
         <lists>
-          <list id=\"15424488\" name=\"Inbox\" deleted=\"0\" locked=\"1\" archived=\"0\" position=\"-1\" smart=\"0\" sort_order=\"0\"/>
-          <list id=\"100\" name=\"TestList\" deleted=\"0\" locked=\"0\" archived=\"1\" position=\"0\" smart=\"0\" sort_order=\"0\"/>
-          <list id=\"101\" name=\"TestList0\" deleted=\"0\" locked=\"0\" archived=\"1\" position=\"0\" smart=\"0\" sort_order=\"0\"/>
-          <list id=\"19339107\" name=\"Due soon\" deleted=\"0\" locked=\"0\" archived=\"0\" position=\"0\" smart=\"1\" sort_order=\"0\">
+          <list id=\"15424488\" name=\"Inbox\" deleted=\"0\"
+                locked=\"1\" archived=\"0\" position=\"-1\"
+                smart=\"0\" sort_order=\"0\"/>
+          <list id=\"100\" name=\"TestList\" deleted=\"0\"
+                locked=\"0\" archived=\"1\" position=\"0\"
+                smart=\"0\" sort_order=\"0\"/>
+          <list id=\"101\" name=\"TestList0\" deleted=\"0\"
+                locked=\"0\" archived=\"1\" position=\"0\"
+                smart=\"0\" sort_order=\"0\"/>
+          <list id=\"19339107\" name=\"Due soon\"
+                deleted=\"0\" locked=\"0\" archived=\"0\"
+                position=\"0\" smart=\"1\" sort_order=\"0\">
             <filter>(dueWithin:\"28 days of today\")</filter>
           </list>
         </lists>
@@ -138,13 +153,22 @@ set_mock '{
     <rsp stat=\"ok\">
       <tasks rev=\"r332ijaf32ock08w8skcwcgo00g8wsc\">
         <list id=\"100\">
-          <taskseries id=\"1000\" created=\"2011-06-03T13:21:22Z\" modified=\"2011-07-22T17:49:33Z\" name=\"test task\" source=\"js\" url=\"\" location_id=\"\">
+          <taskseries id=\"1000\"
+                      created=\"2011-06-03T13:21:22Z\"
+                      modified=\"2011-07-22T17:49:33Z\"
+                      name=\"test task\" source=\"js\"
+                      url=\"\" location_id=\"\">
             <tags>
               <tag>test_list</tag>
             </tags>
             <participants/>
             <notes/>
-            <task id=\"1005\" due=\"2011-06-30T22:00:00Z\" has_due_time=\"0\" added=\"2011-06-03T13:21:22Z\" completed=\"\" deleted=\"\" priority=\"N\" postponed=\"11\" estimate=\"\"/>
+            <task id=\"1005\" due=\"2011-06-30T22:00:00Z\"
+                  has_due_time=\"0\"
+                  added=\"2011-06-03T13:21:22Z\"
+                  completed=\"\" deleted=\"\"
+                  priority=\"N\" postponed=\"11\"
+                  estimate=\"\"/>
           </taskseries>
         </list>
       </tasks>
@@ -189,7 +213,8 @@ set_mock '{
 ####
 # This mock responds to a complete action.
 #
-# The "test task" returned in the list TestList is being completed.
+# The "test task" returned in the list TestList is
+# being completed.
 set_mock '{
   "path": "/rest/",
   "parameters": {
